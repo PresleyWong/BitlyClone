@@ -1,0 +1,62 @@
+<html>
+	<body class="one-or-more-links has-link">
+
+		<div class="stage">
+			<header id="header" data-template="stage-header">
+				<div id="header-inner">
+					<div class="container container-pod container-pod-short"></div>
+					<h1 class="header-logo"><a href="/" rel="nofollow"></a></h1>
+				</div>
+			</header>
+		</div>
+
+
+		<div id="container" class="clearfix">
+
+			<div class="container container-pod shorten-container">
+				<h1 class="page-title t-center">THE LINK KNOWS ALL. SO CAN YOU.</h1>
+
+				<div class="join-bitly t-center">Own your links with Bitly, the world’s leading customer experience platform.</div>
+
+			  	<div class="info-msg"></div>
+
+				<div id="form_container" class="t-center mid-container foot-room">
+
+					<form action="/urls" method="post" name="shortenUrl" id="unAuthShortenForm">
+						<fieldset class="cf">
+						<input id="shorten_url" taborder="1" name="url[long_url]" class="shorten-input" placeholder="Paste a link to shorten it" value="" autocomplete="off" autocorrect="off" autocapitalize="off" type="text">
+						<input id="shorten_btn" class="button button-primary button-large shorten-button" value="Shorten" type="submit">
+
+						</fieldset>
+					</form>
+				</div>
+			</div>
+
+
+			<div class="link-container mid-container">				
+				<div>
+
+					<ul style="display: block;" id="anon_history" class="anon_history">
+
+						<% @array_url.each do |x| %>
+							<li id="1hALtFq" class="shortened_link">
+								<div class="unauth-title">
+									<a class="article-title" href="<%= x.long_url %>" target="_blank"><%=x.long_url%> </a>
+								</div>
+
+								<div class="unauth_capsule clearfix">
+
+									<a data-id='<%= x.id%>' class="short-url" href="<%= x.short_url %>" target="_blank"><%=x.short_url%> </a>	
+									<p class='count' data-count='<%= x.click_count %>' id='click-count-<%= x.id %>'>short url click count:  <%= x.click_count %></p>			
+								</div>
+							</li>
+						<% end %>
+					</ul>
+
+					<%= will_paginate @array_url %>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
